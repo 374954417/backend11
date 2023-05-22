@@ -10,9 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +24,14 @@ public class RoomController {
     @Autowired
     private SubroomMapper subroomMapper;
 
+    @CrossOrigin(value="http://localhost:8080")
     @PostMapping("/living/room")
     @Operation(summary = "房间信息请求",description = "接受Hotel对象。根据hid查找相应房间")
-    public ReturnMsg RoomRequest(Hotel hotel) {
+    public ReturnMsg RoomRequest(@RequestBody Hotel hotel) {
 
+
+        System.out.println("庄子");
+        System.out.println(hotel.getHid());
         List<RoomObj> roomObjs=new ArrayList<>();
 
         QueryWrapper<Room> queryWrapper = new QueryWrapper<>();

@@ -9,9 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +19,7 @@ import java.util.Objects;
 public class UserController {
     @Autowired
     private UserMapper userMapper;
+    @CrossOrigin(value="http://localhost:8080")
     @GetMapping("/user")
     @Operation(summary = "测试接口")
     public List<User> query() {
@@ -29,13 +28,15 @@ public class UserController {
         return list;
     }
 
-
+    @CrossOrigin(value="http://localhost:8080")
     @PostMapping("/login/login")
     @Operation(summary = "登录请求",description = "接受User对象。账号不存在返回101，密码错误返回102，登陆成功返回103。（该方法只检查uname和pwd，其余字段可填任意值。）")
-    public ReturnMsg Login(User user) {
+    public ReturnMsg Login(@RequestBody User user) {
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("uname",user.getUname());
+        System.out.println(user.getUname());
+        System.out.println(user.getUid());
         List<User> user1= userMapper.selectList(queryWrapper);
         if(user1.isEmpty())
         {
@@ -48,10 +49,10 @@ public class UserController {
         return new ReturnMsg(103, "login success!");
     }
 
-
+    @CrossOrigin(value="http://localhost:8080")
     @PostMapping("/login/register")
     @Operation(summary = "注册请求",description = "接受User对象。账号存在返回104，注册成功返回105，未知错误返回106。")
-    public ReturnMsg Register(User user) {
+    public ReturnMsg Register(@RequestBody User user) {
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("uname",user.getUname());

@@ -4,75 +4,77 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.util.Date;
 
-@TableName("order")
+@TableName("t_order")
 public class Order {
-    private Integer oid;
+    private int oid;
 
-    private Integer hid;
+    private String hid;
 
-    private Integer uid;
+    private String uid;
 
-    private Integer rid;
+    private String rid;
 
-    private Date beginDate;
-
-    private Date endDate;
-
-    private Integer totalPrice;
-
-    public Integer getOid() {
+    public int getOid() {
         return oid;
     }
 
-    public void setOid(Integer oid) {
+    public void setOid(int oid) {
         this.oid = oid;
     }
 
-    public Integer getHid() {
+    public String getHid() {
         return hid;
     }
 
-    public void setHid(Integer hid) {
+    public void setHid(String hid) {
         this.hid = hid;
     }
 
-    public Integer getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
-    public Integer getRid() {
+    public String getRid() {
         return rid;
     }
 
-    public void setRid(Integer rid) {
+    public void setRid(String rid) {
         this.rid = rid;
     }
 
-    public Date getBeginDate() {
-        return beginDate;
+    public Date getBegin_date() {
+        return begin_date;
     }
 
-    public void setBeginDate(Date beginDate) {
-        this.beginDate = beginDate;
+    public void setBegin_date(Date begin_date) {
+        this.begin_date = begin_date;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getEnd_date() {
+        return end_date;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setEnd_date(Date end_date) {
+        this.end_date = end_date;
     }
 
-    public Integer getTotalPrice() {
-        return totalPrice;
+    public String getTotal_price() {
+        return total_price;
     }
 
-    public void setTotalPrice(Integer totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotal_price(String total_price) {
+        this.total_price = total_price;
     }
+
+    private Date begin_date;
+
+    private Date end_date;
+
+    private String total_price;
+
+
 }

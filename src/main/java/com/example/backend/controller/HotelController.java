@@ -8,6 +8,7 @@ import com.example.backend.mapper.HotelMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,9 +22,10 @@ public class HotelController {
     @Autowired
     private HotelMapper hotelMapper;
 
+    @CrossOrigin(value="http://localhost:8080")
     @GetMapping("/living")
     @Operation(summary = "酒店搜索请求",description = "接受url参数。分别为搜索目的地，checkin日期和checkout日期（日期暂时可以不写）。")
-    public ReturnMsg Login(@RequestParam(value = "target") String target, @RequestParam(value = "checkin",required = false) Date checkin,@RequestParam(value = "checkout",required = false) Date checkout)
+    public ReturnMsg HotelRequest(@RequestParam(value = "target") String target, @RequestParam(value = "checkin",required = false) Date checkin,@RequestParam(value = "checkout",required = false) Date checkout)
     {
         QueryWrapper<Hotel> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("city",target);

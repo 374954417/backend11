@@ -1,8 +1,9 @@
 package com.example.backend.mapper;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.backend.entity.Room;
+import com.example.backend.entity.Order;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface RoomMapper extends BaseMapper<Room> {
+public interface OrderMapper extends BaseMapper<Order> {
 }
