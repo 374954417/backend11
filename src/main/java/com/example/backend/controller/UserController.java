@@ -2,6 +2,7 @@ package com.example.backend.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.backend.entity.ReturnMsg;
 import com.example.backend.entity.User;
 import com.example.backend.mapper.UserMapper;
@@ -70,6 +71,27 @@ public class UserController {
         }
         else {
             return new ReturnMsg(106, "unknown error!");
+        }
+    }
+
+
+    @CrossOrigin(value="http://localhost:8080")
+    @PostMapping("/user/changepwd")
+    @Operation(summary = "更改密码请求",description = "接受User对象。密码错误返回107，更改成功返回108。")
+    public ReturnMsg ChangePassWord(@RequestBody User user) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("uname",user.getUname());
+        List<User> userquery= userMapper.selectList(queryWrapper);
+        if(!Objects.equals(userquery.get(0).getPwd(), user.getPhone_number()))
+        {
+            return new ReturnMsg(107, "old pwd not match!");
+        }
+        else
+        {
+            UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+            updateWrapper.eq("uname",user.getUname()).set("pwd",user.getPwd());
+            userMapper.update(null,updateWrapper);
+            return new ReturnMsg(108, "change success!");
         }
     }
 

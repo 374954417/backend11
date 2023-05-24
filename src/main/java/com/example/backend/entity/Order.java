@@ -2,7 +2,7 @@ package com.example.backend.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import java.util.Date;
+import java.sql.Date;
 
 @TableName("t_order")
 public class Order {
@@ -46,35 +46,35 @@ public class Order {
         this.rid = rid;
     }
 
-    public Date getBegin_date() {
-        return begin_date;
+    public Date getBegindate() {
+        return begindate;
     }
 
-    public void setBegin_date(Date begin_date) {
-        this.begin_date = begin_date;
+    public void setBegindate(Date begindate) {
+        this.begindate = begindate;
     }
 
-    public Date getEnd_date() {
-        return end_date;
+    public Date getEnddate() {
+        return enddate;
     }
 
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
+    public void setEnddate(Date enddate) {
+        this.enddate = enddate;
     }
 
-    public String getTotal_price() {
-        return total_price;
+    public String getTotalprice() {
+        return totalprice;
     }
 
-    public void setTotal_price(String total_price) {
-        this.total_price = total_price;
+    public void setTotalprice(String totalprice) {
+        this.totalprice = totalprice;
     }
 
-    private Date begin_date;
+    private Date begindate;
 
-    private Date end_date;
+    private Date enddate;
 
-    private String total_price;
+    private String totalprice;
 
 
 }

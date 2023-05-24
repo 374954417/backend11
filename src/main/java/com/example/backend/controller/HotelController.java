@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @Tag(name = "用户接口", description = "用户账号有关响应")
@@ -29,10 +30,21 @@ public class HotelController {
     {
         QueryWrapper<Hotel> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("city",target);
-        List<Hotel> hotelList= hotelMapper.selectList(queryWrapper);
-        System.out.println("目标1");
-        System.out.println(hotelList.get(1).getEqprice());
-        return new ReturnMsg(201,"search success!",hotelList);
+        if(Objects.equals(target, "南京") || Objects.equals(target, "上海") || Objects.equals(target, "镇江") || Objects.equals(target, "苏州") || Objects.equals(target, "盐城")) {
+            List<Hotel> hotelList = hotelMapper.selectList(queryWrapper);
+            System.out.println("目标1");
+            System.out.println(hotelList.get(1).getEqprice());
+            return new ReturnMsg(201, "search success!", hotelList);
+        }
+        else {
+            QueryWrapper<Hotel> queryWrapper1 = new QueryWrapper<>();
+            queryWrapper1.like(true, "hname", target);
+            List<Hotel> userList = hotelMapper.selectList(queryWrapper1);
+            return new ReturnMsg(201, "search success!", userList);
+
+        }
+
+
     }
 
 
