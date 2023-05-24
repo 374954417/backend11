@@ -22,6 +22,16 @@ public class Hotel {
 
     private String midImg2;
 
+    private int eqprice;
+
+    public int getEqprice() {
+        return eqprice;
+    }
+
+    public void setEqprice(int eqprice) {
+        this.eqprice = eqprice;
+    }
+
     public String getHid() {
         return hid;
     }

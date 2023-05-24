@@ -18,6 +18,15 @@ public class Subroom {
     private String feature2;
 
     private String feature3;
+    private String attrs;
+
+    public String getAttrs() {
+        return attrs;
+    }
+
+    public void setAttrs(String attrs) {
+        this.attrs = attrs;
+    }
 
     public String getSrid() {
         return srid;

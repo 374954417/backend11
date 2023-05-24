@@ -56,6 +56,7 @@ public class UserController {
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("uname",user.getUname());
+        System.out.println(user.getUname());
         List<User> user1= userMapper.selectList(queryWrapper);
         if(!user1.isEmpty())
         {

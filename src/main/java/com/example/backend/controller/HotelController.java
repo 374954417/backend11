@@ -30,6 +30,8 @@ public class HotelController {
         QueryWrapper<Hotel> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("city",target);
         List<Hotel> hotelList= hotelMapper.selectList(queryWrapper);
+        System.out.println("目标1");
+        System.out.println(hotelList.get(1).getEqprice());
         return new ReturnMsg(201,"search success!",hotelList);
     }
 
